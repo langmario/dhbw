@@ -1,1 +1,3 @@
-# dhbw
+# DHBW Vorlesungsdateien
+
+Copyright Mario Lang
