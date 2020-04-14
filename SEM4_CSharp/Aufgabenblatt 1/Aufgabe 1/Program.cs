@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared;
+using System;
 
 namespace Aufgabe_1
 {
@@ -11,7 +8,8 @@ namespace Aufgabe_1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World");
-            Console.Read();
+
+            Util.WaitForInput();
         }
     }
 }

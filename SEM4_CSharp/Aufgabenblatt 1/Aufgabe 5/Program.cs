@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared;
+using System;
 
 namespace Aufgabe_5
 {
@@ -14,17 +11,22 @@ namespace Aufgabe_5
             {
                 "Es ist heute ein sehr schöner Tag in Horb am Neckar.",
                 "Diese Zeichenkette ist nicht lang, denke ich.",
-                "Tabulatoren\tsind auch Leerzeichen."
+                "Tabulatoren\tsind auch Leerzeichen.",
+                "Test t",
+                "",
+                "     "
             };
 
             foreach (var message in messages)
             {
-                
-                Console.WriteLine($"{message}");
-                Console.WriteLine($"> {message.CountWords()}");
+                Console.WriteLine($"> \"{message}\"");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Word Count: {message.CountWords()} ({message.CountWordsRegex()})");
+                Console.ResetColor();
             }
 
-            Console.Read();
+
+            Util.WaitForInput();
         }
     }
 }

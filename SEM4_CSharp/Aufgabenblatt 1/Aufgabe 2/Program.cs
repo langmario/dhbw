@@ -10,7 +10,8 @@ namespace Aufgabe_2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Willkommen zu Aufgabe2");
+            Console.WriteLine("Willkommen zu Aufgabe 2");
+
             string input;
             do
             {
@@ -22,24 +23,46 @@ namespace Aufgabe_2
                     case "zählen":
                         zaehlen();
                         break;
+
                     case "hilfe":
                         printHelp();
                         break;
+
+                    case "exit":
                     case "beenden":
+                        exit().Wait();
                         return;
+
+                    case "clear":
+                        Console.Clear();
+                        break;
+
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Ungültiges Kommando");
+                        Console.ResetColor();
                         break;
                 }
 
             } while (true);
         }
 
+
+        private static async Task exit()
+        {
+            Console.WriteLine("Tschüss");
+            await Task.Delay(400);
+        }
+
+
         private static void printHelp()
         {
-            Console.WriteLine("zählen\t->\tzählt von einer eingegebenen unteren Grenze bis zu einer oberen Grenze");
-            Console.WriteLine("hilfe\t->\tgibt eine Übersicht aller Befehle aus");
-            Console.WriteLine("beenden\t->\tbeendet das Programm");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("zählen  ->  zählt von einer eingegebenen unteren Grenze bis zu einer oberen Grenze");
+            Console.WriteLine("hilfe   ->  gibt eine Übersicht aller Befehle aus");
+            Console.WriteLine("beenden ->  beendet das Programm");
+            Console.WriteLine("clear   ->  löscht die Eingabehistorie");
+            Console.ResetColor();
         }
 
 
@@ -51,20 +74,20 @@ namespace Aufgabe_2
                 Console.Write("Maximaler Wert: ");
                 if (int.TryParse(Console.ReadLine(), out int upper))
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     for (int i = lower; i <= upper; i++)
                     {
                         Console.WriteLine(i);
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Ungültige Eingabe!");
+                    Console.ResetColor();
+
+                    return;
                 }
             }
-            else
-            {
-                Console.WriteLine("Ungültige Eingabe!");
-            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ungültige Eingabe!");
+            Console.ResetColor();
         }
     }
 }
