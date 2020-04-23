@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Aufgabe_6
@@ -17,7 +13,7 @@ namespace Aufgabe_6
             {
                 FirstName = "Petra",
                 LastName = "Maier",
-                Gender = Gender.Female
+                Gender = Gender.Diverse
             };
 
 

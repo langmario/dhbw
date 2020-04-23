@@ -8,7 +8,7 @@ namespace Aufgabe_9
         {
             var person = new Person();
 
-            person.NameChanged += name => Console.WriteLine(name);
+            person.NameChanged += Console.WriteLine;
 
             person.FirstName = "Donna";
             person.LastName = "Summer";

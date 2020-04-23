@@ -10,11 +10,11 @@ namespace Aufgabe_9
 
 		private string _firstName;
 		public string FirstName
-		{
-			get { return _firstName; }
+        {
+            get => _firstName;
 			set
 			{
-				_firstName = value;
+                _firstName = value;
 				NameChanged?.Invoke(value);
 			}
 		}
@@ -22,14 +22,13 @@ namespace Aufgabe_9
 		private string _lastName;
 		public string LastName
 		{
-			get { return _lastName; }
+			get => _lastName;
 			set
 			{
-				_lastName = value;
+                _lastName = value;
 				NameChanged?.Invoke(value);
 			}
 		}
-
 
 	}
 }
