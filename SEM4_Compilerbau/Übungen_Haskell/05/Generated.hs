@@ -159,7 +159,7 @@ ClassFile {
             array_attr_mi = [
                 AttributeCode {
                     index_name_attr = 7,
-                    tam_len_attr = 78,
+                    tam_len_attr = 85, -- 78
                     len_stack_attr = 10,
                     len_local_attr = 2,
                     tam_code_attr = 35, -- 28
