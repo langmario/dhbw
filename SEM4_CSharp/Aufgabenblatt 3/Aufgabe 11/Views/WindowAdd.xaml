@@ -23,7 +23,7 @@
             <Setter Property="Padding" Value="10 0"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="10">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.7*"/>
