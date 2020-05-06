@@ -1,0 +1,43 @@
+﻿<Window x:Class="Aufgabe_12_Client.views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aufgabe_12_Client.views"
+        mc:Ignorable="d"
+        Background="#eee"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800" MinHeight="250" MinWidth="400">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding SearchText}"/>
+        <Button Grid.Column="3" Grid.Row="0" Command="{Binding SearchCommand}">Suchen</Button>
+
+        <ListView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding FirstName}"/>
+                        <Run Text="{Binding LastName}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Column="0" Grid.Row="2" Command="{Binding EmptyCommand}">Leeren</Button>
+        <Button Grid.Column="1" Grid.Row="2" Command="{Binding LoadCommand}">Laden</Button>
+        <Button Grid.Column="2" Grid.Row="2" Command="{Binding NewCommand}">Neu</Button>
+        <Button Grid.Column="3" Grid.Row="2" Command="{Binding DeleteCommand}">Löschen</Button>
+    </Grid>
+</Window>
