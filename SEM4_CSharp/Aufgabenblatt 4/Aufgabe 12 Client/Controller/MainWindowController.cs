@@ -14,10 +14,10 @@ namespace Aufgabe_12_Client.controller
         private readonly CustomerServiceClient client = new CustomerServiceClient();
 
 
-        private async void ExecuteGetAll(object o)
+        private void ExecuteGetAll(object o)
         {
             ExecuteClear(o);
-            var customers = await client.GetAllCustomersAsync();
+            var customers = client.GetAllCustomers();
             vm.Customers = new ObservableCollection<Customer>(customers);
         }
 
@@ -27,22 +27,22 @@ namespace Aufgabe_12_Client.controller
         }
 
 
-        private async void ExecuteDelete(object o)
+        private void ExecuteDelete(object o)
         {
-            if (await client.RemoveCustomerAsync(vm.SelectedCustomer))
+            if (client.RemoveCustomer(vm.SelectedCustomer))
             {
                 ExecuteGetAll(o);
             }
         }
 
 
-        private async void ExecuteGetByLastName(object o)
+        private void ExecuteGetByLastName(object o)
         {
             if (!string.IsNullOrEmpty(vm.SearchText))
             {
                 ExecuteClear(o);
                 string lastName = vm.SearchText;
-                var customers = await client.GetCustomersAsync(lastName);
+                var customers = client.GetCustomers(lastName);
                 vm.Customers = new ObservableCollection<Customer>(customers);
             }
             else
@@ -52,13 +52,13 @@ namespace Aufgabe_12_Client.controller
         }
 
 
-        private async void ExecuteNewCustomer(object o)
+        private void ExecuteNewCustomer(object o)
         {
             var controller = new AddWindowController();
             var customer = controller.AddCustomer();
             if (customer != null)
             {
-                if (await client.AddCustomerAsync(customer))
+                if (client.AddCustomer(customer))
                 {
                     ExecuteGetAll(o);
                 }
