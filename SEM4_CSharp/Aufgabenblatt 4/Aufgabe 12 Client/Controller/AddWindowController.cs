@@ -26,7 +26,7 @@ namespace Aufgabe_12_Client.Controller
             var result = window.ShowDialog() ?? false;
 
             return !string.IsNullOrEmpty(vm.FirstName) || !string.IsNullOrEmpty(vm.LastName)
-                ? result ? new Customer { FirstName = vm.FirstName, LastName = vm.LastName } : null
+                ? result ? vm.Customer : null
                 : null;
         }
     }
