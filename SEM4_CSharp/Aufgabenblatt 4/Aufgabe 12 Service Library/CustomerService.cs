@@ -13,20 +13,20 @@ namespace Aufgabe_12_Service_Library
         {
             new Customer
             {
-                FirstName = "John",
-                LastName = "Doe",
+                FirstName = "Jens",
+                LastName = "Mander",
                 IsPremiumCustomer = true
             },
             new Customer
             {
-                FirstName = "Jane",
-                LastName = "Doe",
+                FirstName = "Hans",
+                LastName = "Wurst",
                 IsPremiumCustomer = false
             },
             new Customer
             {
-                FirstName = "John",
-                LastName = "Dickins",
+                FirstName = "Guybrush",
+                LastName = "Threepwod",
                 IsPremiumCustomer = true
             }
         };
