@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace Aufgabe_12_Service_Library
 {
@@ -24,6 +22,12 @@ namespace Aufgabe_12_Service_Library
                 FirstName = "Jane",
                 LastName = "Doe",
                 IsPremiumCustomer = false
+            },
+            new Customer
+            {
+                FirstName = "John",
+                LastName = "Dickins",
+                IsPremiumCustomer = true
             }
         };
 
@@ -45,7 +49,7 @@ namespace Aufgabe_12_Service_Library
 
         public List<Customer> GetCustomers(string search)
         {
-            return mCustomers.Where(c => c.LastName == search).ToList();
+            return mCustomers.Where(c => c.LastName.StartsWith(search, StringComparison.InvariantCultureIgnoreCase)).ToList();
         }
 
         public bool RemoveCustomer(Customer customer)

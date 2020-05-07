@@ -6,6 +6,7 @@ using Aufgabe_12_Client.views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,17 +23,13 @@ namespace Aufgabe_12_Client.controller
         private void ExecuteGetAll(object o)
         {
             ExecuteClear(o);
-            Customer[] customers = client.GetAllCustomers();
-            if (customers != null)
-            {
-                foreach (var c in customers)
-                    vm.Customers.Add(c);
-            }
+            var customers = client.GetAllCustomers();
+            vm.Customers = new ObservableCollection<Customer>(customers);
         }
 
         private void ExecuteClear(object o)
         {
-            vm.Customers.Clear();
+            vm.Customers?.Clear();
         }
 
 
@@ -52,11 +49,10 @@ namespace Aufgabe_12_Client.controller
                 ExecuteClear(o);
                 string lastName = vm.SearchText;
                 var customers = client.GetCustomers(lastName);
-                if (customers != null)
-                {
-                    foreach (var c in customers)
-                        vm.Customers.Add(c);
-                }
+                vm.Customers = new ObservableCollection<Customer>(customers);
+            } else
+            {
+                ExecuteGetAll(o);
             }
         }
 
@@ -81,8 +77,8 @@ namespace Aufgabe_12_Client.controller
             {
                 SearchCommand = new RelayCommand(ExecuteGetByLastName),
                 LoadCommand = new RelayCommand(ExecuteGetAll),
-                EmptyCommand = new RelayCommand(ExecuteClear, o => vm.Customers.Any()),
-                DeleteCommand = new RelayCommand(ExecuteDelete, o => vm.SelectedCustomer != null),
+                EmptyCommand = new RelayCommand(ExecuteClear, _ => vm.Customers?.Any() ?? false),
+                DeleteCommand = new RelayCommand(ExecuteDelete, _ => vm.SelectedCustomer != null),
                 NewCommand = new RelayCommand(ExecuteNewCustomer)
             };
 

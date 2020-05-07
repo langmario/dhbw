@@ -91,16 +91,16 @@ namespace Aufgabe_12_Client.CustomerServiceProxy {
         System.Threading.Tasks.Task<bool> RemoveCustomerAsync(Aufgabe_12_Client.CustomerServiceProxy.Customer customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetAllCustomersResponse")]
-        Aufgabe_12_Client.CustomerServiceProxy.Customer[] GetAllCustomers();
+        System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer> GetAllCustomers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetAllCustomersResponse")]
-        System.Threading.Tasks.Task<Aufgabe_12_Client.CustomerServiceProxy.Customer[]> GetAllCustomersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer>> GetAllCustomersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetCustomersResponse")]
-        Aufgabe_12_Client.CustomerServiceProxy.Customer[] GetCustomers(string search);
+        System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer> GetCustomers(string search);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetCustomersResponse")]
-        System.Threading.Tasks.Task<Aufgabe_12_Client.CustomerServiceProxy.Customer[]> GetCustomersAsync(string search);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer>> GetCustomersAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,19 +146,19 @@ namespace Aufgabe_12_Client.CustomerServiceProxy {
             return base.Channel.RemoveCustomerAsync(customer);
         }
         
-        public Aufgabe_12_Client.CustomerServiceProxy.Customer[] GetAllCustomers() {
+        public System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer> GetAllCustomers() {
             return base.Channel.GetAllCustomers();
         }
         
-        public System.Threading.Tasks.Task<Aufgabe_12_Client.CustomerServiceProxy.Customer[]> GetAllCustomersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer>> GetAllCustomersAsync() {
             return base.Channel.GetAllCustomersAsync();
         }
         
-        public Aufgabe_12_Client.CustomerServiceProxy.Customer[] GetCustomers(string search) {
+        public System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer> GetCustomers(string search) {
             return base.Channel.GetCustomers(search);
         }
         
-        public System.Threading.Tasks.Task<Aufgabe_12_Client.CustomerServiceProxy.Customer[]> GetCustomersAsync(string search) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Aufgabe_12_Client.CustomerServiceProxy.Customer>> GetCustomersAsync(string search) {
             return base.Channel.GetCustomersAsync(search);
         }
     }

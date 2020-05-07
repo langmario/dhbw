@@ -11,13 +11,6 @@ namespace Aufgabe_12_Service_Library.model
         public string LastName { get; set; }
         public bool IsPremiumCustomer { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is Customer c)
-            {
-                return FirstName == c.FirstName && LastName == c.LastName;
-            }
-            return false;
-        }
+        public override bool Equals(object obj) => obj is Customer c && FirstName == c.FirstName && LastName == c.LastName;
     }
 }

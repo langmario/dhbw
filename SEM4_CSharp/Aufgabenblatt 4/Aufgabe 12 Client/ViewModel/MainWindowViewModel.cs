@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Aufgabe_12_Client.CustomerServiceProxy;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Aufgabe_12_Client.viewmodel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<CustomerServiceProxy.Customer> Customers { get; set; } = new ObservableCollection<CustomerServiceProxy.Customer>();
-        private CustomerServiceProxy.Customer _selectedCustomer = null;
-        public CustomerServiceProxy.Customer SelectedCustomer
+        private ObservableCollection<Customer> _customers;
+        public ObservableCollection<Customer> Customers
+        {
+            get => _customers;
+            set
+            {
+                _customers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Customer _selectedCustomer;
+        public Customer SelectedCustomer
         {
             get => _selectedCustomer;
             set
