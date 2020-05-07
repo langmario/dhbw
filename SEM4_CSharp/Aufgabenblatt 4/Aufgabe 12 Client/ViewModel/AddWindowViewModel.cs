@@ -2,7 +2,7 @@
 
 namespace Aufgabe_12_Client.viewmodel
 {
-    class AddWindowViewModel : ViewModelBase
+    internal class AddWindowViewModel : ViewModelBase
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

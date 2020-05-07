@@ -1,19 +1,21 @@
-﻿using Aufgabe_12_Client.framework;
+﻿using Aufgabe_12_Client.CustomerServiceProxy;
+using Aufgabe_12_Client.framework;
 using Aufgabe_12_Client.viewmodel;
 using Aufgabe_12_Client.views;
 
 namespace Aufgabe_12_Client.Controller
 {
-    public class AddWindowController
+    internal class AddWindowController
     {
         private AddWindow window;
+        private AddWindowViewModel vm;
 
-        public CustomerServiceProxy.Customer AddCustomer()
+        public Customer AddCustomer()
         {
-            AddWindowViewModel vm = new AddWindowViewModel
+            vm = new AddWindowViewModel
             {
                 CancelCommand = new RelayCommand(o => window.Close()),
-                OkCommand = new RelayCommand(o => { window.DialogResult = true; window.Close(); }),
+                OkCommand = new RelayCommand(o => { window.DialogResult = true; window.Close(); })
             };
 
             window = new AddWindow
@@ -23,7 +25,9 @@ namespace Aufgabe_12_Client.Controller
 
             var result = window.ShowDialog() ?? false;
 
-            return result ? new CustomerServiceProxy.Customer { FirstName = vm.FirstName, LastName = vm.LastName } : null;
+            return !string.IsNullOrEmpty(vm.FirstName) || !string.IsNullOrEmpty(vm.LastName)
+                ? result ? new Customer { FirstName = vm.FirstName, LastName = vm.LastName } : null
+                : null;
         }
     }
 }

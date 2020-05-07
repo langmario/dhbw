@@ -3,27 +3,21 @@ using Aufgabe_12_Client.CustomerServiceProxy;
 using Aufgabe_12_Client.framework;
 using Aufgabe_12_Client.viewmodel;
 using Aufgabe_12_Client.views;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Aufgabe_12_Client.controller
 {
-    class MainWindowController
+    internal class MainWindowController
     {
-        MainWindowViewModel vm;
-        CustomerServiceClient client = new CustomerServiceClient();
+        private MainWindowViewModel vm;
+        private readonly CustomerServiceClient client = new CustomerServiceClient();
 
 
-        private void ExecuteGetAll(object o)
+        private async void ExecuteGetAll(object o)
         {
             ExecuteClear(o);
-            var customers = client.GetAllCustomers();
+            var customers = await client.GetAllCustomersAsync();
             vm.Customers = new ObservableCollection<Customer>(customers);
         }
 
@@ -33,37 +27,38 @@ namespace Aufgabe_12_Client.controller
         }
 
 
-        private void ExecuteDelete(object o)
+        private async void ExecuteDelete(object o)
         {
-            if (client.RemoveCustomer(vm.SelectedCustomer))
+            if (await client.RemoveCustomerAsync(vm.SelectedCustomer))
             {
                 ExecuteGetAll(o);
             }
         }
 
 
-        private void ExecuteGetByLastName(object o)
+        private async void ExecuteGetByLastName(object o)
         {
             if (!string.IsNullOrEmpty(vm.SearchText))
             {
                 ExecuteClear(o);
                 string lastName = vm.SearchText;
-                var customers = client.GetCustomers(lastName);
+                var customers = await client.GetCustomersAsync(lastName);
                 vm.Customers = new ObservableCollection<Customer>(customers);
-            } else
+            }
+            else
             {
                 ExecuteGetAll(o);
             }
         }
 
 
-        private void ExecuteNewCustomer(object o)
+        private async void ExecuteNewCustomer(object o)
         {
             var controller = new AddWindowController();
             var customer = controller.AddCustomer();
             if (customer != null)
             {
-                if (client.AddCustomer(customer))
+                if (await client.AddCustomerAsync(customer))
                 {
                     ExecuteGetAll(o);
                 }

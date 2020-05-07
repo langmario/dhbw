@@ -33,7 +33,7 @@ namespace Aufgabe_12_Service_Library
 
         public bool AddCustomer(Customer customer)
         {
-            if (mCustomers.Find(customer.Equals) != null)
+            if (mCustomers.Contains(customer))
             {
                 return false;
             }

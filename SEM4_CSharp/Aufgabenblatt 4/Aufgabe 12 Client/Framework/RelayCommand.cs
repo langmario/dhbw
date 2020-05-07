@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Aufgabe_12_Client.framework
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> _execute;
-        private Predicate<object> _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
         public event EventHandler CanExecuteChanged
         {
@@ -29,7 +25,7 @@ namespace Aufgabe_12_Client.framework
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || this._canExecute(parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
         public void Execute(object parameter)
