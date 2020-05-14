@@ -7,7 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label>Genres</Label>
+        <ListView Grid.Row="1" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:Genre}">
                     <Label Content="{Binding Name}"/>

@@ -7,7 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label>Filme</Label>
+        <ListView Grid.Row="1" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:Movie}">
                     <StackPanel Orientation="Horizontal">
