@@ -108,9 +108,13 @@ namespace Aufgabe_14.Controllers
                         var result = MessageBox.Show($"Wenn Sie das Genre '{toDelete.Name}' löschen werden auch alle zugehörigen Filme gelöscht!", "Warnung", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                         if (result == MessageBoxResult.OK)
                         {
-                            _genreRepository.Delete(vm.SelectedGenre);
-                            _genres.Genres.Remove(vm.SelectedGenre);
+                            _genreRepository.Delete(toDelete);
+                            _genres.Genres.Remove(toDelete);
                         }
+                    } else
+                    {
+                        _genreRepository.Delete(toDelete);
+                        _genres.Genres.Remove(toDelete);
                     }
                     break;
                 }

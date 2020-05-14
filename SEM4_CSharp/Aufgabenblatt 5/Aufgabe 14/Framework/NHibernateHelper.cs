@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Aufgabe_14.Framework
 {
-    public static class NHibernateHelper
+    public class NHibernateHelper : INHibernateHelper
     {
         private static ISessionFactory _sessionFactory;
         public static readonly string DatabaseFile = @"Database\Movies.db";
@@ -32,7 +32,7 @@ namespace Aufgabe_14.Framework
                 .BuildSessionFactory();
         }
 
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
             return SessionFactory.OpenSession();
         }

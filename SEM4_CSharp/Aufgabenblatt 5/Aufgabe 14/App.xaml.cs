@@ -1,9 +1,11 @@
 ﻿using Aufgabe_14.Controllers;
+using Aufgabe_14.Framework;
 using Aufgabe_14.Models;
 using Aufgabe_14.Repositories;
 using Aufgabe_14.ViewModel;
 using Aufgabe_14.Views;
 using Autofac;
+using NHibernate;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -20,6 +22,8 @@ namespace Aufgabe_14
             base.OnStartup(e);
 
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<NHibernateHelper>().As<INHibernateHelper>();
 
             // CONTROLLERS
             builder.RegisterType<MainWindowController>();

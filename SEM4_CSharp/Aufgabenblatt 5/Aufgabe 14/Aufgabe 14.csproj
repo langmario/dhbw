@@ -113,6 +113,7 @@
     <Compile Include="Controllers\Interfaces\IMovieAddController.cs" />
     <Compile Include="Controllers\MainWindowController.cs" />
     <Compile Include="Controllers\MovieAddController.cs" />
+    <Compile Include="Framework\INHibernateHelper.cs" />
     <Compile Include="Framework\IViewModelBase.cs" />
     <Compile Include="Framework\NHibernateHelper.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
